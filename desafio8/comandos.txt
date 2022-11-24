@@ -1,0 +1,71 @@
+Inserto comandos para cada consigna!
+
+Crear base de datos: use ecommerce
+
+1) db.createCollection("productos")
+
+   db.createCollection("mensajes")
+
+2) db.productos.insertMany([{ title: "pantalon slim", price: 100, image: "imagen1" },
+	{ title: "pantalon de traje", price: 150, image: "imagen2" },
+	{ title: "pantalon de algodon", price: 200, image: "imagen3" },
+	{ title: "pantalon jogger", price: 250, image: "imagen4" },
+	{ title: "bermuda de jean", price: 300, image: "imagen5" },
+	{ title: "chomba", price: 350, image: "imagen6" },
+	{ title: "camisa a rayas", price: 400, image: "imagen7" },
+	{ title: "camisa de algodon", price: 450, image: "imagen8" },
+	{ title: "camisa a cuadros azul", price: 500, image: "imagen9" },
+	{ title: "camisa elastica", price: 550, image: "imagen10" }
+	])
+
+    db.mensajes.insertMany([
+	{ email: "ejemplo1@mail.com", time: "23-11-2022 23:30:00", messsage: "mensaje1" },
+	{ email: "ejemplo2@mail.com", time: "23-11-2022 23:30:01", messsage: "mensaje2" },
+	{ email: "ejemplo3@mail.com", time: "23-11-2022 23:30:02", messsage: "mensaje3" },
+	{ email: "ejemplo4@mail.com", time: "23-11-2022 23:30:03", messsage: "mensaje4" },
+	{ email: "ejemplo5@mail.com", time: "23-11-2022 23:30:04", messsage: "mensaje5" },
+	{ email: "ejemplo6@mail.com", time: "23-11-2022 23:30:05", messsage: "mensaje6" },
+	{ email: "ejemplo7@mail.com", time: "23-11-2022 23:30:06", messsage: "mensaje7" },
+	{ email: "ejemplo8@mail.com", time: "23-11-2022 23:30:07", messsage: "mensaje8" },
+	{ email: "ejemplo9@mail.com", time: "23-11-2022 23:30:08", messsage: "mensaje9" },
+	{ email: "ejemplo10@mail.com", time: "23-11-2022 23:30:09", messsage: "mensaje10" }
+	])
+
+3) db.productos.find()
+
+   db.mensajes.find()
+
+4) db.productos.countDocuments()
+
+   db.mensajes.countDocuments()
+
+5) a-db.productos.insertOne({ title: "sudadera con capucha", price: 1500, image: "imagen11" })
+
+b- Consulta por nombre de producto especifico:
+
+   db.productos.find({title: "sudadera basica"})
+
+Inserto 4 productos más para aplicar los filtros
+
+   db.productos.insertMany([
+	{ title: "sudadera basica", price: 2500, image: "imagen12" },
+	{ title: "camiseta blanca", price: 3250, image: "imagen13" },
+	{ title: "pantalon de jean roto", price: 4750, image: "imagen14" },
+	{ title: "malla salmón", price: 4000, image: "imagen15" }
+	])
+
+i- db.productos.find({price: {$lt:1000}})
+
+ii- db.productos.find({ $and: [{price: {$gte: 1000}},{price: {$lte: 3000}}]})
+
+iii- db.productos.find({price: {$gt:3000}})
+
+iv- db.productos.find({}, {"title": 1}).sort({"value": 1}).limit(1).skip(2)
+
+c) db.productos.update({},{$set:{"stock": 100}},{multi:true, upsert:false})
+
+d) db.productos.updateMany({price: {$gt:4000}},{$set:{"stock": 0}},{multi:true, upsert:false})
+
+e) db.productos.deleteMany({price: {$lt: 1000}})
+
+6)
