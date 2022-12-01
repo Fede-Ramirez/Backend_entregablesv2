@@ -13,15 +13,4 @@ const initMongoDB = async () => {
     }
 };
 
-const disconnectMongo = async() => {
-    try {
-        console.log('Desconectando la DB');
-        await mongoose.disconnect()
-        console.log('Desconexión realizada con éxito');
-    } catch (error) {
-        console.log(`ERROR => ${error}`);
-        return error;
-    }
-}
-
-    module.exports = { initMongoDB, disconnectMongo }
+    module.exports = { initMongoDB }
