@@ -1,0 +1,52 @@
+{
+	"entities": {
+		"author": {
+			"lucas@gmail.com": {
+				"id": "lucas@gmail.com",
+				"nombre": "Lucas",
+				"apellido": "Morando",
+				"edad": "30",
+				"alias": "Lukitas",
+				"avatar": "Imagen de Lucas"
+			},
+			"jonathan@gmail.com": {
+				"id": "jonathan@gmail.com",
+				"nombre": "Jonathan",
+				"apellido": "Gonzales",
+				"edad": "40",
+				"alias": "El jony",
+				"avatar": "Imagen de Jonathan"
+			},
+			"marcela@gmail.com": {
+				"id": "marcela@gmail.com",
+				"nombre": "Marcela",
+				"apellido": "Perez",
+				"edad": "25",
+				"alias": "La bomba",
+				"avatar": "Imagen de Marcela"
+			}
+		},
+		"message": {
+			"1": {
+				"id": "1",
+				"author": "lucas@gmail.com",
+				"text": "Buenas noches!"
+			},
+			"2": {
+				"id": "2",
+				"author": "jonathan@gmail.com",
+				"text": "Hola gente!"
+			},
+			"3": {
+				"id": "3",
+				"author": "marcela@gmail.com",
+				"text": "Hola Lucas y Johnny!"
+			}
+		}
+	},
+	"result": [
+		"1",
+		"2",
+		"3"
+	]
+}

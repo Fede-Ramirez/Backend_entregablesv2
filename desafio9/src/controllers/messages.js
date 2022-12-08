@@ -1,14 +1,10 @@
 const { normalize, schema, denormalize } = require('normalizr');
 const filesystem = require('fs');
 const path = require('path');
-// const { fileURLToPath } = require('url');
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 const inputPath = path.resolve(__dirname, '../../data/messages.json');
-// const inputPath = path.join(__dirname, '../data/messages.json');
 
 const author = new schema.Entity('author', {}, { 
-    idAttribute: 'email' 
+    idAttribute: 'id' 
 });
 
 const message = new schema.Entity(
@@ -39,7 +35,7 @@ const normalizeMessages = async (req, res) => {
     try {
         const originalData = JSON.parse(filesystem.readFileSync(inputPath));
         const normalizedData = normalize(originalData, messageSchema);
-        const normalizedDataPath = path.join(__dirname, '../data/normalize.json');
+        const normalizedDataPath = path.join(__dirname, '../../data/normalize.json');
         let content = JSON.stringify(normalizedData, null, '\t');
         filesystem.writeFileSync(normalizedDataPath, content);
 
@@ -55,7 +51,7 @@ const normalizeMessages = async (req, res) => {
 
 const denormalizeMessages = async (req, res) => {
     try {
-        const normalizedDataPath = path.resolve(__dirname, '../data/normalize.json');
+        const normalizedDataPath = path.resolve(__dirname, '../../data/normalize.json');
         const normalizedData = JSON.parse(filesystem.readFileSync(normalizedDataPath));
         const denormalizedData = denormalize( normalizedData.result, messageSchema, normalizedData.entities);
 
