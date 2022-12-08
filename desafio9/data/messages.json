@@ -1,0 +1,39 @@
+[
+    {
+        "id": "1",
+        "author": {
+            "id": "lucas@gmail.com",
+            "nombre": "Lucas",
+            "apellido": "Morando",
+            "edad": "30",
+            "alias": "Lukitas",
+            "avatar": "Imagen de Lucas"
+            },
+        "text": "Buenas noches!"
+    },
+    {
+        "id": "2",
+        "author": {
+            "id": "jonathan@gmail.com",
+            "nombre": "Jonathan",
+            "apellido": "Gonzales",
+            "edad": "40",
+            "alias": "El jony",
+            "avatar": "Imagen de Jonathan"
+            },
+        "text": "Hola gente!"
+    },
+    {
+        "id": "3", 
+        "author": {
+            "id": "marcela@gmail.com",
+            "nombre": "Marcela",
+            "apellido": "Perez",
+            "edad": "25",
+            "alias": "La bomba",
+            "avatar": "Imagen de Marcela"
+            },
+        "text": "Hola Lucas y Johnny!"
+    }
+]
+    

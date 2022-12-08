@@ -1,5 +1,5 @@
 const socketIo = require('socket.io');
-const { getAllProducts } = require('../controllers/products');
+const { getAllProducts, createProduct } = require('../controllers/products');
 const { getAllMessages } = require('../controllers/messages');
 
 let io;

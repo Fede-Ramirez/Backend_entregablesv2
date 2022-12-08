@@ -1,12 +1,12 @@
 const { productsInstance } = require('../services/database');
 
-const getAllProducts = async (req, res) => {
+const getAllProducts = async () => {
     try {
         const products = await productsInstance.get();
-        res.json(products);
+        return products;
     }
     catch (err) {
-        res.status(400).json(err.message)
+        console.log(err);
     }
 }
 
