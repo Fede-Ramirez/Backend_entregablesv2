@@ -15,7 +15,7 @@ const initWsServer = (server) =>{
                 product.price = Number(product.price);
                 let id;
                 const products = await getAllProducts();
-
+                console.log(products);
                 if(products){
                     id = products[products.length -1].id +1;
                 }
