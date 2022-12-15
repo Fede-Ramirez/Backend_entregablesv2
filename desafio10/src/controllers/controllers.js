@@ -31,10 +31,18 @@ const login = (req, res) => {
         };
 
         res.json({
-            msg: `Bienvenido ${req.session.info.username}!`
+            msg: `Bienvenido/a ${req.session.info.username}!`
         })
     }
 } 
+
+const infoSession = (req, res) => {
+    res.send({
+        session: req.session,
+        sessionId: req.sessionID,
+        cookies: req.cookies,
+    });
+}
 
 const visit = (req, res) => {
     req.session.info.contador++;
@@ -46,24 +54,19 @@ const visit = (req, res) => {
 const logout = (req, res) => {
     req.session.destroy((err) => {
         if (!err) {
-            res.send('Logout ok!');
+            res.status(200).json({
+                msg: `Hasta luego!`
+            })
         } 
         else {
-            res.send({ 
-                status: 'Logout ERROR', 
-                body: err 
-            });
+            res.status(500).json({
+                msg: 'Error al desloguearse'
+            })
+            console.log(err);
         } 
     });
 }
 
-const infoSession = (req, res) => {
-    res.send({
-        session: req.session,
-        sessionId: req.sessionID,
-        cookies: req.cookies,
-    });
-}
 
 module.exports = {
     login,

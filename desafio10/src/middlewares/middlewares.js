@@ -3,7 +3,8 @@ const validateLogIn = (req, res, next) => {
     if (req.session.info && req.session.info.loggedIn) {
         next();
     } else {
-        res.status(401).json({ msg: 'no estas autorizado' });
+        res.status(401).json({ 
+            msg: 'No está autorizado para realizar esta acción o su sesión ha expirado, por favor ingrese nuevamente' });
     }    
 };
 

@@ -10,10 +10,12 @@ const ttlSeconds = 180;
 const StoreOptions = {
     store: MongoStore.create({
         mongoUrl: config.MONGO_ATLAS_URL,
+        // Encripta los datos de la sesión
         crypto: {
             secret: 'squirrel',
         },
     }),
+    autoRemoveInterval: 60,
     secret: 'shhhhhhhhhhhhhhhhhhhhh',
     resave: false,
     saveUninitialized: false,
