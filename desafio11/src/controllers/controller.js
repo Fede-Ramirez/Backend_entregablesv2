@@ -7,13 +7,6 @@ const passportOptions = {
 
 const logIn = (req, res, next) => {
     try {
-        // passport.authenticate('login', passportOptions),
-        // function (req, res) {
-        //     res.json({ 
-        //         msg: 'Bienvenido/a!', 
-        //         user: req.user 
-        //     });
-        // }
         res.json({ 
             msg: 'Bienvenido!', 
             user: req.user 

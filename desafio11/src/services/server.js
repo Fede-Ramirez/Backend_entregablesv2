@@ -9,24 +9,17 @@ const mainRouter = require('../routes/index');
 const app = express();
 app.use(express.json());
 
-// app.use(
-//     session({
-//         secret: 'secret',
-//         resave: false,
-//         saveUninitialized: true,
-//     }),
-// );
-
 const ttlSeconds = 180;
 
 const StoreOptions = {
     store: MongoStore.create({
         mongoUrl: config.MONGO_ATLAS_URL,
-        // crypto: {
-        //   secret: 'squirrel',
-        // },
+        crypto: {
+            secret: 'squirrel',
+        },
     }),
     secret: 'secretString',
+    autoRemoveInterval: 300,
     resave: false,
     saveUninitialized: false,
     cookie: {
