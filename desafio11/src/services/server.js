@@ -1,25 +1,46 @@
 const express = require('express');
 const passport = require ('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const config = require('../config');
 const { signUpFunction, logInFunction } = require('./auth');
-const mainRouter = require('../routes');
+const mainRouter = require('../routes/index');
 
 const app = express();
 app.use(express.json());
 
-app.use(
-    session({
-        secret: 'secret',
-        resave: false,
-        saveUninitialized: true,
-    }),
-);
+// app.use(
+//     session({
+//         secret: 'secret',
+//         resave: false,
+//         saveUninitialized: true,
+//     }),
+// );
 
+const ttlSeconds = 180;
+
+const StoreOptions = {
+    store: MongoStore.create({
+        mongoUrl: config.MONGO_ATLAS_URL,
+        // crypto: {
+        //   secret: 'squirrel',
+        // },
+    }),
+    secret: 'secretString',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: ttlSeconds * 1000,
+    },
+};
+
+app.use(session(StoreOptions)); 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/api', mainRouter);
 
 passport.use('login', logInFunction);
 passport.use('signup', signUpFunction);
+
+app.use('/api', mainRouter);
 
 module.exports = app;

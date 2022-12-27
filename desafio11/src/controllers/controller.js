@@ -7,13 +7,17 @@ const passportOptions = {
 
 const logIn = (req, res, next) => {
     try {
-        passport.authenticate('login', passportOptions),
-        function (req, res) {
-            res.json({ 
-                msg: 'Bienvenido/a!', 
-                user: req.user 
-            });
-        }
+        // passport.authenticate('login', passportOptions),
+        // function (req, res) {
+        //     res.json({ 
+        //         msg: 'Bienvenido/a!', 
+        //         user: req.user 
+        //     });
+        // }
+        res.json({ 
+            msg: 'Bienvenido!', 
+            user: req.user 
+        });
     } catch(err) {
         next(err);
     }
@@ -36,8 +40,7 @@ const signUp = (req, res, next) =>  {
             res.json({ 
                 msg: 'Registro realizado con éxito' 
             });
-        })
-        /*(req, res, next)*/;
+        })(req, res, next);
     } catch(err) {
         next(err);
     }
@@ -45,7 +48,7 @@ const signUp = (req, res, next) =>  {
 
 const logOut = (req, res, next) => {
     try {
-        req.logOut();
+        () => req.logOut();
         res.json({ 
             msg: 'Hasta luego!' 
         });

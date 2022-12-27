@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    email: {
+    username: {
         type: String,
         required: true,
         unique: true,
@@ -21,6 +20,10 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    admin:  {
+        type: Boolean,
+        default: false
+    }
 });
 
 UserSchema.pre('save', async function (next) {

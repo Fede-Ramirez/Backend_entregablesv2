@@ -3,7 +3,7 @@ const { Strategy } = require('passport-local');
 const { UserModel } = require('../models/user');
 
 const strategyOptions = {
-    usernameField: 'email',
+    usernameField: 'username',
     passwordField: 'password',
     passReqToCallback: true,
 };
@@ -29,16 +29,15 @@ const logIn = async (req, username, password, done) => {
 const signUp = async (req, username, password, done) => {
     try {
         console.log('Realizando registro...')
-        const { username, password, email, firstName, lastName } = req.body;
-        console.log(req.body);
+        const { username, password, firstName, lastName } = req.body;
         
-        if (!email || !firstName || !lastName) {
+        if (!username || !firstName || !lastName) {
             console.log('Campos inválidos');
             return done(null, false, {message: 'Campos inválidos'});
         }
     
         const query = {
-            $or: [{ username: username }, { email: email }],
+            $or: [{ username: username }],
         };
 
         console.log(query);
@@ -52,7 +51,6 @@ const signUp = async (req, username, password, done) => {
                 const userData = {
                 username,
                 password,
-                email,
                 firstName,
                 lastName,
                 };
@@ -61,7 +59,8 @@ const signUp = async (req, username, password, done) => {
                 return done(null, newUser);
             }
     } catch (err) {
-        done(err);
+        console.log(err);
+        return done(null, false, { message: 'Error inesperado' });
     }
 };
 
@@ -73,11 +72,13 @@ passport.serializeUser((user, done) => {
     done(null, user._id);
 });
 
-passport.deserializeUser((userId, done) => {
+passport.deserializeUser(async(userId, done) => {
     console.log('Ejecutando desserializeUser');
-    UserModel.findById(userId).then((user) => {
-        return done(null, user);
-    })
+    // UserModel.findById(userId).then((user) => {
+    //     return done(null, user);
+    // })
+    const user = await UserModel.findById(userId);
+    return done(null, user);
 });
 
 module.exports = {
