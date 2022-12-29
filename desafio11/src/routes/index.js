@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const passport = require('passport');
-const { logInVerification } = require('../middlewares/auth');
+const { logInVerification, adminVerification } = require('../middlewares/auth');
 const { logIn, signUp, logOut, sessionInfo } = require('../controllers/controller');
 const userRouter = require('./user');
 
