@@ -50,6 +50,25 @@ const logOut = (req, res, next) => {
     }
 };
 
+const processInfo = (req, res, next) => {
+    try {
+        const processInfo = {
+            directory: process.info,
+            id: process.pid,
+            version: process.version,
+            title: process.title,
+            system: process.platform,
+            memory: process.memoryUsage()
+        }
+
+        res.json({
+            Info: processInfo
+        })
+    } catch (err) {
+        
+    }
+}
+
 const sessionInfo = (req, res, next) =>   {
     try {
         res.json({ 
@@ -104,6 +123,7 @@ module.exports = {
     logIn,
     signUp,
     logOut,
+    processInfo,
     sessionInfo,
     getUsers,
     createUsers
