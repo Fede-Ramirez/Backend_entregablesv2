@@ -40,14 +40,19 @@ const signUp = (req, res, next) =>  {
 };
 
 const logOut = (req, res, next) => {
-    try {
-        () => req.logOut();
-        res.json({ 
-            msg: 'Hasta luego!' 
-        });
-    } catch(err) {
-        next(err);
-    }
+    req.session.destroy((err) => {
+        if (!err) {
+            res.status(200).json({
+                msg: `Hasta luego!`
+            })
+        } 
+        else {
+            res.status(500).json({
+                msg: 'Error al desloguearse'
+            })
+            console.log(err);
+        } 
+})
 };
 
 const processInfo = (req, res, next) => {
