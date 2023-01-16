@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
+const randomNumbers = require('./randomFunction');
+const port = require('../index')
 
 app.get('/', (req, res) => {
     console.log(`PID => ${process.pid} will answer`);
 
     res.json({
         pid: process.pid,
-        msg: 'HOLA USUARIO',
+        msg: `HOLA USUARIO, ESTÁS EN EL PUERTO ${port}`,
     });
 });
 
@@ -28,6 +30,14 @@ app.get('/dead', (req, res) => {
     res.json({ msg: 'OK' });
     console.log(`PID => ${process.pid} will die`);
     process.exit(code ? Number(code) : 0);
+});
+
+app.get('/api/randoms', (req, res) => {
+    
+    res.json({
+        msg: `HOLA DESDE PUERTO ${port}`,
+        port8081: randomNumbers,
+    })
 });
 
 module.exports = app;
