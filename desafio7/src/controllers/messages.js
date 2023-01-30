@@ -1,12 +1,12 @@
 const { messagesInstance } = require('../services/database');
 
-const getAllMessages = async (req, res) => {
+const getAllMessages = async () => {
     try {
         const messages = await messagesInstance.get();
-        res.json(messages);
+        return messages;
     }
     catch (err) {
-        res.status(400).json(err.message)
+        console.log(err);
     }
 }
 

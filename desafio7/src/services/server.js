@@ -18,9 +18,9 @@ app.set('views', viewsPath );
 
 app.get('/',async (req, res, next) =>{
     try{
-        const productos = await getAllProducts;
-        const mensajes = await getAllMessages;
-        res.render('formulario', {productos, mensajes});
+        const products = await getAllProducts;
+        const messages = await getAllMessages;
+        res.render('formulario', {products, messages});
     }catch (err){
         next(err);
     }
