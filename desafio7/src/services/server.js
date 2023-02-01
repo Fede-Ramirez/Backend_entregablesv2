@@ -18,8 +18,8 @@ app.set('views', viewsPath );
 
 app.get('/',async (req, res, next) =>{
     try{
-        const products = await getAllProducts;
-        const messages = await getAllMessages;
+        const products = await getAllProducts();
+        const messages = await getAllMessages();
         res.render('formulario', {products, messages});
     }catch (err){
         next(err);
