@@ -11,14 +11,14 @@ const initWsServer = (server) =>{
     io.on('connection', async (socket) =>{
         console.log('Se ha establecido una nueva conexión')
 
-        socket.emit('addTable', await getAllProducts());
+        /*socket.emit('addTable', await getAllProducts());*/
 
         socket.on('addProduct', async producto => {
             await productsInstance.create(producto)
             io.sockets.emit('addTable', await getAllProducts());
         })
 
-        socket.emit('renderMessage', await getAllMessages());
+        /*socket.emit('renderMessage', await getAllMessages());*/
 
         socket.on('newMessage', async mensaje => {
             await messagesInstance.create(mensaje)

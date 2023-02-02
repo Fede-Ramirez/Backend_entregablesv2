@@ -27,6 +27,9 @@ product.addEventListener('submit', (e) =>{
 });
 
 const addProductToTable = (data) =>{
+    
+    const lastProduct = data.pop();
+
     const trInput = document.createElement('tr');
     const id = document.createElement('td');
     const title = document.createElement('td');
@@ -35,11 +38,10 @@ const addProductToTable = (data) =>{
     const tdImage = document.createElement('td');
     const image = document.createElement('img');
 
-    
-    id.innerText = data.id;
-    title.innerText = data.title;
-    price.innerText = data.price;
-    image.setAttribute('src', data.imgURL);
+    id.innerText = lastProduct.id;
+    title.innerText = lastProduct.title;
+    price.innerText = lastProduct.price;
+    image.setAttribute('src', lastProduct.imgURL);
     image.setAttribute('alt', 'Imagen no disponible'); 
     
     trInput.appendChild(id);
@@ -71,14 +73,17 @@ chat.addEventListener('submit', (e) =>{
 })
 
 const addNewMessage = (data) =>{
+
+    const lastMessage = data.pop();
+
     const messageContainer = document.createElement('div');
     const messageEmail = document.createElement('p');
     const messageTime = document.createElement('span');
     const messageText = document.createElement('p');
 
-    messageEmail.innerText = data.email;
-    messageText.innerText = data.msg;
-    messageTime.innerText = data.time;
+    messageEmail.innerText = lastMessage.email;
+    messageText.innerText = lastMessage.msg;
+    messageTime.innerText = lastMessage.time;
 
     messageContainer.appendChild(messageEmail);
     messageEmail.appendChild(messageTime);
