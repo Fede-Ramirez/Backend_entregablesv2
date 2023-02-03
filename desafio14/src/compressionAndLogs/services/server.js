@@ -9,7 +9,7 @@ app.use('/api', mainRouter);
 
 app.use((req, res) => {
     logger.error(`${req.url}`);
-    logger.info(`${req.route} - ${req.method}`);
+    logger.info(`${req.url} - ${req.method}`);
     return res.status(404).json({
         error: `la ruta ${req.url} no ha sido implementada`,
     });

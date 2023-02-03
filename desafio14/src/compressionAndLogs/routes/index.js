@@ -8,7 +8,7 @@ const randomNumbers = require('../utils/randomFunction');
 router.get('/info',  (req, res) => {
     try {
         logger.info(`PID= ${process.pid}`);
-        logger.info(`${req.route} - ${req.method}`);
+        logger.info(`${req.url} - ${req.method}`);
         res.json({
             pid: process.pid,
             msg: 'Hola usuario, este es nuestro catálogo de productos',
@@ -21,7 +21,7 @@ router.get('/info',  (req, res) => {
 router.get('/slow', (req, res) => {
     try {
         logger.info(`PID= ${process.pid}`);
-        logger.info(`${req.route} - ${req.method}`);
+        logger.info(`${req.url} - ${req.method}`);
         let sum = 0;
         for (let i = 0; i < 15006500445; i++) {
             sum += i;
@@ -36,7 +36,7 @@ router.get('/slow', (req, res) => {
 });
 router.get('/dead', (req, res) => {
     try {
-        logger.info(`${req.route} - ${req.method}`);
+        logger.info(`${req.url} - ${req.method}`);
         res.json({msg: 'Ok, el proceso ha finalizado, reinicie si desea continuar navegando'});
         process.exit(0);
     } catch (err) {
@@ -48,7 +48,7 @@ router.get('/dead', (req, res) => {
 
 router.get('/randoms', compression(), (req, res) => {
     try {
-        logger.info(`${req.route} - ${req.method}`);
+        logger.info(`${req.url} - ${req.method}`);
         res.json({
             msg: 'Estos son sus números',
             numbers: randomNumbers
@@ -60,7 +60,7 @@ router.get('/randoms', compression(), (req, res) => {
 
 /*router.get('/randoms', (req, res) => {
     try {
-        logger.info(`${req.route} - ${req.method}`);
+        logger.info(`${req.url} - ${req.method}`);
         res.json({
             msg: 'Estos son sus números',
             numbers: randomNumbers
