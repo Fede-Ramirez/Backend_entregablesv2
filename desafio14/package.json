@@ -13,6 +13,7 @@
     "start:profiling":  "node --prof src/profiling/index.js",
     "start:profilingProcess": "node --prof-process isolate-script1.log > isolate-script1.txt",
     "start:inspect": "node --inspect src/profiling/index.js",
+    "start:0x": "0x src/profiling/index.js",
     "dev": "nodemon src/index.js"
   },
   "author": "",
