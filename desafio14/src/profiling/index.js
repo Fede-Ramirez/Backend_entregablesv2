@@ -51,7 +51,7 @@ app.get('/info', (req, res) => {
             memoryUsage: process.memoryUsage(),
         };
 
-        console.log(finalObject);
+        console.log(infoObject);
         res.status(200).json({
             data: infoObject,
         });
@@ -60,7 +60,7 @@ app.get('/info', (req, res) => {
     }
 });
 
-    app.listen(PORT, () =>
+    app.listen(port, () =>
         console.log(
         `Servidor express escuchando en el puerto ${port} - PID WORKER ${process.pid}`
         )

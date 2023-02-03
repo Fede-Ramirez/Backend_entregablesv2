@@ -6,6 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/compressionAndLogs/index.js",
+    "start:fork": "node src/profiling/index.js --puerto=8081",
+    "start:cluster": "node src/profiling/index.js --puerto=8082 --cluster",
+    "artillery:fork": "artillery quick --count 50 -n 20 http://localhost:8081/info",
+    "artillery:cluster": "artillery quick --count 50 -n 20 http://localhost:8082/info",
+    "start:profiling":  "node --prof src/profiling/index.js",
+    "start:profilingProcess": "node --prof-process isolate-script1.log > isolate-script1.txt",
+    "start:inspect": "node --inspect src/profiling/index.js",
     "dev": "nodemon src/index.js"
   },
   "author": "",
