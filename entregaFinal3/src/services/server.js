@@ -33,8 +33,8 @@ app.use(session(StoreOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use('login', loginFunc);
-passport.use('signup', signUpFunc);
+passport.use('login', loginFunction);
+passport.use('signup', signUpFunction);
 
 app.use('/api', mainRouter);
 
@@ -42,8 +42,10 @@ app.use(function (err, req, res, next) {
     const status = err.statusCode || 500;
     const msg = err.message || 'Internal Server Error';
     const stack = err.stack;
-    Logger.error(err);
-    res.status(status).send({ msg, stack });
+    logger.error(err);
+    res.status(status).send({ 
+        msg, stack 
+    });
 });
 
 module.exports = app;

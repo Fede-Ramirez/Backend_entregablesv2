@@ -23,8 +23,8 @@ const notifyNewUserByEmail = async (userData) => {
     const mailOptions = {
         from: owner,
         to: config.GMAIL_EMAIL,
-        subject: 'New User Created',
-        html: `A New User was created. See info below\n\n\n ${userData}`,
+        subject: 'Nuevo usuario creado',
+        html: `Un nuevo usuario ha sido creado. Ve su información a continuación:\n\n\n ${userData}`,
     };
     const response = await gmailTransporter.sendMail(mailOptions);
     return response;
@@ -32,7 +32,7 @@ const notifyNewUserByEmail = async (userData) => {
 
 const notifyNewOrderUsingWhatsApp = async (orderData) => {
     const params = {
-        body: `A New Order was created. See info below\n\n\n ${orderData}`,
+        body: `Una nueva orden ha sido solicitada. Ver la información aquí debajo:\n\n\n ${orderData}`,
         from: `whatsapp:${config.TWILIO_WSP_CELLPHONE}`,
         to: `whatsapp:${config.ADMIN_PHONE}`,
     };
@@ -41,7 +41,9 @@ const notifyNewOrderUsingWhatsApp = async (orderData) => {
     return response;
 };
 
-export const NotificationService = {
+const NotificationService = {
     notifyNewUserByEmail,
     notifyNewOrderUsingWhatsApp,
 };
+
+module.exports = NotificationService;

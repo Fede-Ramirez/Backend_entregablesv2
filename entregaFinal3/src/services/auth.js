@@ -15,14 +15,16 @@ const login = async (req, username, password, done) => {
     logger.info('Realizando log in');
 
     const user = await getUserByEmail(username);
+
     if (!user) {
         return done(null, false, { message: 'Usuario o contraseña inválidos' });
-    }
+    };
+
     const isValidPassword = await user.isValidPassword(password);
 
     if (!isValidPassword) {
         return done(null, false, { message: 'Usuario o contraseña inválidos' });
-    }
+    };
 
     logger.info('Log in realizado con éxito');
     return done(null, user);
@@ -35,9 +37,9 @@ const signup = async (req, username, password, done) => {
         const { firstName, lastName, age, admin, address } = req.body;
 
         if (validateNewUser(req.body)) {
-        logger.error('Campos inválidos');
-        return done(null, false, { message: 'Campos inválidos' });
-        }
+            logger.error('Campos inválidos');
+            return done(null, false, { message: 'Campos inválidos' });
+        };
 
         const user = await getUserByEmail(username);
 

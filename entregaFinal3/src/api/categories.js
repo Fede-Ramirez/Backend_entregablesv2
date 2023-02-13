@@ -4,7 +4,7 @@ const { ProductsAPI, ApiError, ErrorStatus } = require('./index');
 const find = (id) => {
     if (id) {
         return CategoryModel.findById(id);
-    }
+    };
 
     return CategoryModel.find();
 };
@@ -26,7 +26,7 @@ const remove = async (id) => {
         'No se puede eliminar la categoría porque hay productos dentro de la misma',
         ErrorStatus.BadRequest,
         );
-    }
+    };
 
     CategoryModel.findByIdAndDelete(id);
 };

@@ -6,7 +6,7 @@ const create = (userId) => {
     CartModel.create({ userId });
 };
 
-const getCardByUser = (userId) => {
+const getCartByUser = (userId) => {
     CartModel.findOne({ userId });
 };
 
@@ -118,7 +118,7 @@ export default {
     create,
     addProduct,
     deleteProducts,
-    getCardByUser,
+    getCartByUser,
     emptyCart,
     createOrder,
 };

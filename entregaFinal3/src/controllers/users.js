@@ -13,7 +13,9 @@ const validateNewUser = (newUser) => {
     );
 };
 
-const getUserByEmail = (email) => UserAPI.findByEmail(email);
+const getUserByEmail = (email) => {
+    UserAPI.findByEmail(email);
+};
 
 const createUser = async (userData) => {
     const newUser = await UserAPI.create(userData);
@@ -22,13 +24,14 @@ const createUser = async (userData) => {
 };
 
 const isLoggedIn = (req, res, done) => {
-    logger.info('Is Authenticated');
+    logger.info('Está autenticado');
     logger.info(req.isAuthenticated());
     logger.info('req.user');
     logger.info(req.user);
+
     if (!req.isAuthenticated()) {
         return res.status(401).json({ msg: 'No estás autorizado/a' });
-    }
+    };
 
     done();
 };
@@ -38,7 +41,9 @@ const isAdmin = (req, res, done) => {
     logger.info(req.user);
 
     if (!req.user.admin) {
-        return res.status(401).json({ msg: 'No estás autorizado - solo administradores' });
+        return res.status(401).json({ 
+            msg: 'No estás autorizado - solo administradores' 
+        });
     }
 
     done();
