@@ -1,6 +1,6 @@
 const passport = require('passport');
 const { Router } = require('express');
-const logger = require('../services/logger');
+const logger = require('../services/log4jsConfig');
 const { EmailService } = require('../services/notifications');
 
 const passportOptions = { badRequestMessage: 'Invalid username / password' };

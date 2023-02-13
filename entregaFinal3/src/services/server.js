@@ -15,12 +15,12 @@ const ttlSeconds = 1800;
 
 const StoreOptions = {
     store: MongoStore.create({
-        mongoUrl: Config.MONGO_ATLAS_URL,
+        mongoUrl: config.MONGO_ATLAS_URL,
         crypto: {
-        secret: Config.SESSION_SECRET_KEY,
+        secret: config.SESSION_SECRET_KEY,
         },
     }),
-    secret: Config.SESSION_SECRET_KEY,
+    secret: config.SESSION_SECRET_KEY,
     resave: false,
     saveUninitialized: false,
     cookie: {
