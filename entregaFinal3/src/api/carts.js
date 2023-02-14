@@ -114,7 +114,7 @@ const createOrder = async (cartId) => {
     await emptyCart(cartId);
 };
 
-export default {
+module.exports = {
     create,
     addProduct,
     deleteProducts,

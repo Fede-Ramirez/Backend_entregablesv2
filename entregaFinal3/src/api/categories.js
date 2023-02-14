@@ -31,7 +31,7 @@ const remove = async (id) => {
     CategoryModel.findByIdAndDelete(id);
 };
 
-export default {
+module.exports = {
     find,
     create,
     update,

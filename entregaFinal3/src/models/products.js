@@ -25,5 +25,6 @@ const ProductModel = mongoose.model(
 
 module.exports = {
     categoryCollectionName,
+    productsCollectionName,
     ProductModel
 }

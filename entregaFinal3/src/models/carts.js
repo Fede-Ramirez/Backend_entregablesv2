@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { productsCollectionName } = require('./products');
-const { userCollectionName } = require('./user');
+const { userCollectionName } = require('./users');
 
 const cartCollectionName = 'cart';
 
