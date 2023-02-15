@@ -3,7 +3,7 @@ const { Router } = require('express');
 const logger = require('../services/log4jsConfig');
 const { EmailService } = require('../services/notifications');
 
-const passportOptions = { badRequestMessage: 'Invalid username / password' };
+const passportOptions = { badRequestMessage: 'Usuario o contraseña inválidos' };
 
 const signUp = (req, res, next) => {
     passport.authenticate('signup', passportOptions, (err, user, info) => {
