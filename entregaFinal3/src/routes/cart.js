@@ -9,4 +9,4 @@ router.post('/add', Handler(CartController.addProduct));
 router.post('/remove', Handler(CartController.deleteProduct));
 router.post('/order', Handler(CartController.createOrder));
 
-module.exports =router;
+module.exports = router;
