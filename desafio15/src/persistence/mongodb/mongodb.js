@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const config = require('../../config/config');
+const logger = require('../../services/log4jsConfig');
 
 const initMongoDB = async () => {
     try {
-        console.log('Conectando a la db');
+        logger.info('Conectando a la db');
         await mongoose.connect(config.MONGO_ATLAS_URL);
-        console.log('Conexión realizada con exito');
+        logger.info('Conexión realizada con exito');
     } catch (error) {
-        console.log(`ERROR => ${error}`);
+        logger.error(`ERROR => ${error}`);
         return error;
     }
 };
@@ -22,7 +23,7 @@ class MongoDB {
             const document = await this.collection.create(doc);
             return document;
         } catch (error) {
-            console.log(error);
+            logger.error(error);
         }
     }
 
@@ -31,7 +32,7 @@ class MongoDB {
             const docs = await this.collection.find({});
             return docs;
         } catch (error) {
-            console.log(error);
+            logger.error(error);
         }
     }
 }

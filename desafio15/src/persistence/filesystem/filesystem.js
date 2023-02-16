@@ -1,4 +1,5 @@
 const filesystem = require('fs');
+const logger = require('../../services/log4jsConfig');
 
 class File {
     constructor(path) {
@@ -12,7 +13,7 @@ class File {
             await filesystem.promises.writeFile(this.path, JSON.stringify(items));
             return obj;
         } catch (error) {
-            console.log(error);
+            logger.error(error);
         }
     }
 
@@ -25,7 +26,7 @@ class File {
                 return [];
             }
         } catch (error) {
-            console.log(error);
+            logger.error(error);
         }
     }
 }

@@ -1,9 +1,10 @@
 const { File } = require("./filesystem/filesystem");
 const { Memory } = require("./memory/memory");
 const { MongoDB } = require("./mongodb/mongodb");
-const { productsSchema } = require("./mongodb/schemas/productsSchema");
-const { cartsSchema } = require("./mongodb/schemas/cartsSchema");
+const productsSchema = require("./mongodb/schemas/productsSchema");
+const cartsSchema = require("./mongodb/schemas/cartsSchema");
 const { initMongoDB } = require("./mongodb/mongodb");
+const logger = require('../services/log4jsConfig');
 
 let productsPersistence;
 let cartsPersistence;
@@ -13,13 +14,13 @@ switch(argv) {
     case 'file':
         productsPersistence = new File('./src/persistence/filesystem/products.json');
         cartsPersistence = new File('./src/persistence/filesystem/carts.json');
-        console.log(argv);
+        logger.info(argv);
         break;
     case 'mongo':
         initMongoDB();
         productsPersistence = new MongoDB('products', productsSchema);
         cartsPersistence = new MongoDB('carts', cartsSchema);
-        console.log(argv);
+        logger.info(argv);
         break;
     default:
         productsPersistence = new Memory();
