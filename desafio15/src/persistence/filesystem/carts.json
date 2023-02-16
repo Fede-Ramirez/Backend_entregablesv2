@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "user": "Claudio",
+        "products": [
+        { "product": "queso crema", "price": 700, "amount": 3 },
+        { "product": "fideos spaguetti", "price": 300, "amount": 5 }
+        ]
+    },
+    {
+        "id": 2,
+        "user": "Ximena",
+        "products": [
+        { "product": "alfajor de chocolate", "price": 500, "amount": 6 },
+        { "product": "aceitunas", "price": 350, "amount": 4 }
+        ]
+    }
+]

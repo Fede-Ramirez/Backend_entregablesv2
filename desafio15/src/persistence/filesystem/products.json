@@ -1,0 +1,4 @@
+[
+    { "product": "tapa de empanadas", "price": 600, "stock": 60 },
+    { "product": "carne picada", "price": 1200, "stock": 20 }
+]
