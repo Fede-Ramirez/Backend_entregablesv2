@@ -2,8 +2,8 @@ const passport = require('passport');
 const { Strategy } = require('passport-local');
 const { UserModel } = require('../models/users');
 const { validateNewUser, getUserByEmail, createUser } = require('../controllers/users');
-const logger = require('./log4js');
-const { NotificationService } = require('./notifications');
+const logger = require('./log4jsConfig');
+const { NotificationService } = require('./notifications'); 
 
 const strategyOptions = {
     usernameField: 'email',

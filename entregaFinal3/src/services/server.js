@@ -3,7 +3,7 @@ const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const session = require('express-session');
 const config = require('../config/config');
-const { signUpFunction, loginFunction } = ('./auth');
+const { signUpFunction, loginFunction } = require('./auth');
 const mainRouter = require('../routes');
 const logger = require('./log4jsConfig');
 

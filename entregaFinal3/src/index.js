@@ -8,7 +8,7 @@ const { PORT } = config;
 const initialize = async () => {
     await connectDatabase();
     logger.info('db conectada con éxito')
-    const server = server.listen(PORT, () => {
+    server.listen(PORT, () => {
         logger.info(`Servidor escuchando en el puerto ${PORT}`);
     });
 
