@@ -44,22 +44,22 @@ const signup = async (req, username, password, done) => {
         const user = await getUserByEmail(username);
 
         if (user) {
-        logger.error('El usuario ya existe');
-        return done(null, false, { message: 'El usuario ya existe' });
+            logger.error('El usuario ya existe');
+            return done(null, false, { message: 'El usuario ya existe' });
         } else {
-        const userData = {
-            email: username,
-            password,
-            firstName,
-            lastName,
-            age,
-            admin,
-            address,
-        };
+            const userData = {
+                email: username,
+                password,
+                firstName,
+                lastName,
+                age,
+                admin,
+                address,
+            };
 
-        const newUser = await createUser(userData);
-        await NotificationService.notifyNewUserByEmail(newUser);
-        return done(null, newUser);
+            const newUser = await createUser(userData);
+            await NotificationService.notifyNewUserByEmail(newUser);
+            return done(null, newUser);
         }
     } catch (error) {
         done(error);

@@ -12,8 +12,8 @@ const UserSchema = new mongoose.Schema(
         age: { type: Number, required: true, min: 18 },
         admin: { type: Boolean, default: false },
         address: {
-        street: { type: String, required: true },
-        city: { type: String, required: true },
+            street: { type: String, required: true },
+            city: { type: String, required: true },
         },
     },
     { versionKey: false, timestamps: true },
