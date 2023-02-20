@@ -2,12 +2,14 @@ const { CartModel } = require('../models');
 const { NotificationService } = require('../services/notifications');
 const { ProductsAPI, ApiError, ErrorStatus } = require('./index');
 
-const create = (userId) => {
-    CartModel.create({ userId });
+const create = async(userId) => {
+    const cart = await CartModel.create({ userId });
+    return cart;
 };
 
-const getCartByUser = (userId) => {
-    CartModel.findOne({ userId });
+const getCartByUser = async(userId) => {
+    const cart = await CartModel.findOne({ userId });
+    return cart;
 };
 
 const addProduct = async (cartId, productId, items) => {

@@ -13,8 +13,9 @@ const validateNewUser = (newUser) => {
     );
 };
 
-const getUserByEmail = (email) => {
-    UserAPI.findByEmail(email);
+const getUserByEmail = async(email) => {
+    const user = await UserAPI.findByEmail(email);
+    return user;
 };
 
 const createUser = async (userData) => {

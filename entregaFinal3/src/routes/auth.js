@@ -51,8 +51,8 @@ const router = Router();
 
 router.post('/login', login);
 router.post('/signup', signUp);
-router.post('logout', (req, res) => {
-    req.logOut();
+router.post('/logout', (req, res) => {
+    () => req.logOut();
     res.json({ 
         msg: 'Hasta luego, gracias por visitarnos!' 
     });

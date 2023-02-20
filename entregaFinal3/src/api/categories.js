@@ -1,20 +1,24 @@
 const { CategoryModel } = require('../models');
 const { ProductsAPI, ApiError, ErrorStatus } = require('./index');
+const logger = require('../services/log4jsConfig');
 
-const find = (id) => {
+const find = async (id) => {
     if (id) {
-        return CategoryModel.findById(id);
+        const category = await CategoryModel.findById(id);
+        return category
     };
 
-    return CategoryModel.find();
+    const category= await CategoryModel.find();
+    return category
 };
 
-const create = (newCategory) => {
-    CategoryModel.create(newCategory);
+const create = async(newCategory) => {
+    const category = await CategoryModel.create(newCategory);
+    return category;
 };
 
-const update = (id, data) =>
-    CategoryModel.findByIdAndUpdate(id, data, {
+const update = async (id, data) =>
+    await CategoryModel.findByIdAndUpdate(id, data, {
         new: true,
 });
 

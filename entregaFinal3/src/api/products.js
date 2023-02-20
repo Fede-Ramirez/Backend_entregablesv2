@@ -1,28 +1,32 @@
 const { ProductModel } = require('../models');
 
-const find = (id) => {
+const find = async(id) => {
     if (id) {
-        return ProductModel.findById(id);
+        const product = await ProductModel.findById(id);
+        return product;
     };
 
-    return ProductModel.find();
+    const product = await ProductModel.find();
+    return product;
 };
 
-const findByCategory = (categoryId) => {
-    ProductModel.find({ categoryId });
+const findByCategory = async(categoryId) => {
+    const product = await ProductModel.find({ categoryId });
+    return product;
 };
 
-const create = (newProduct) => {
-    ProductModel.create(newProduct);
+const create = async (newProduct) => {
+    const product = await ProductModel.create(newProduct);
+    return product;
 };
 
-const update = (id, data) =>
-    ProductModel.findByIdAndUpdate(id, data, {
-        new: true,
-});
+const update = async (id, data) => {
+    const product = await ProductModel.findByIdAndUpdate(id, data, {new: true,})
+    return product;
+}
 
-const remove = (id) => {
-    ProductModel.findByIdAndDelete(id);
+const remove = async(id) => {
+    await ProductModel.findByIdAndDelete(id);
 };
 
 const addStock = async (id, stock) => {

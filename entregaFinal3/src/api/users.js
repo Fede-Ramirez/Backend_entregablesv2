@@ -1,19 +1,23 @@
 const { UserModel } = require('../models');
 
-const find = (id) => {
+const find = async(id) => {
     if (id) {
-        return UserModel.findById(id);
+        const user = await UserModel.findById(id);
+        return user;
     }
 
-    return UserModel.find();
+    const user = await UserModel.find();
+    return user;
 };
 
-const findByEmail = (email) => {
-    UserModel.findOne({ email });
+const findByEmail = async(email) => {
+    const user = await UserModel.findOne({ email });
+    return user;
 };
 
-const create = (newUser) => {
-    UserModel.create(newUser);
+const create = async(newUser) => {
+    const user = await UserModel.create(newUser);
+    return user;
 };
 
 const update = (id, data) =>
