@@ -1,5 +1,5 @@
 const filesystem = require('fs');
-const logger = require('../../services/log4jsConfig');
+const logger = require('../../../services/log4jsConfig');
 
 class DaoFile {
     constructor(path) {

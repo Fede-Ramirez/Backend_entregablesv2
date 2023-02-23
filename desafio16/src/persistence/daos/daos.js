@@ -4,7 +4,7 @@ const { DaoMongoDB } = require("./dao-mongodb/mongodb");
 const productsSchema = require("./dao-mongodb/schemas/productsSchema");
 const cartsSchema = require("./dao-mongodb/schemas/cartsSchema");
 const { initMongoDB } = require("./dao-mongodb/mongodb");
-const logger = require('../services/log4jsConfig');
+const logger = require('../../services/log4jsConfig');
 
 let productsDao;
 let cartsDao;

@@ -1,4 +1,4 @@
-const { saveProducts, getAllProducts } = require("../daos/daos.js");
+const { saveProducts, getAllProducts } = require("../persistence/daos/daos.js");
 
 async function saveProductsService(items){
     const products = await saveProducts(items)

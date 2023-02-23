@@ -1,4 +1,4 @@
-const { saveCarts, getAllCarts } = require("../daos/daos.js");
+const { saveCarts, getAllCarts } = require("../persistence/daos/daos.js");
 
 async function saveCartsService(items){
     const carts = await saveCarts(items)
