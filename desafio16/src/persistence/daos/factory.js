@@ -36,6 +36,7 @@ async function getAllProducts() {
     return await productsDao.getAll();
 };
 
+
 async function saveCarts(obj) {
     return await cartsDao.save(obj);
 };
@@ -44,9 +45,19 @@ async function getAllCarts() {
     return await cartsDao.getAll();
 };
 
+function getProductsDao() {
+    return productsDao;
+};
+
+function getCartsDao() {
+    return cartsDao;
+};
+
 module.exports = {
     saveProducts,
     getAllProducts,
     saveCarts,
     getAllCarts,
+    getProductsDao,
+    getCartsDao
 }

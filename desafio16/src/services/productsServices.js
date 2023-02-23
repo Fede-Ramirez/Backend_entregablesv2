@@ -1,12 +1,14 @@
-const { saveProducts, getAllProducts } = require("../persistence/daos/factory.js");
+const { ProductsRepository } = require("../persistence/repository/productsRepository");
+
+const productsRepository = new ProductsRepository();
 
 async function saveProductsService(items){
-    const products = await saveProducts(items)
+    const products = await productsRepository.save(items)
     return products;
 };
 
 async function getAllProductsService() {
-    const products = await getAllProducts();
+    const products = await productsRepository.getAll();
     return products;
 };
 

@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('../../../config/config');
 const logger = require('../../../services/log4jsConfig');
-const { productsDTOfunction } = require('../../dto/productsDTO');
-const { cartsDTOfunction } = require('../../dto/cartsDTO');
 
 mongoose.set('strictQuery', false)
 
@@ -34,8 +32,7 @@ class DaoMongoDB {
     async getAll() {
         try {
             const docs = await this.collection.find({});
-            //return productsDTOfunction(docs);
-            return cartsDTOfunction(docs);
+            return docs;
         } catch (error) {
             logger.error(error);
         }
