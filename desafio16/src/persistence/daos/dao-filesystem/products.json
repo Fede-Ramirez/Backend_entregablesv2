@@ -1,4 +1,16 @@
 [
-  { "product": "Albahaca", "price": 150 },
-  { "product": "Rúcula", "price": 300 }
+  {
+    "name": "lechuga",
+    "price": 1500,
+    "stock": 70,
+    "codebar": "ndueihvbifbv",
+    "buyer": "Horacio"
+  },
+  {
+    "name": "danonino",
+    "price": 600,
+    "stock": 69,
+    "codebar": "smcosdh8c7dst",
+    "buyer": "Johnatan"
+  }
 ]

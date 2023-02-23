@@ -1,0 +1,12 @@
+[
+  {
+    "user": "Lucas",
+    "products": [{ "name": "Cacao", "price": 600 }],
+    "orderId": "i3ur49yt9eyht9tg8"
+  },
+  {
+    "user": "Carolina",
+    "products": [{ "name": "Limón", "price": 843 }],
+    "orderId": "esmfw48ru94y34"
+  }
+]

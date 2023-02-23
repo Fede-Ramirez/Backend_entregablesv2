@@ -12,8 +12,8 @@ let argv = process.argv[2];
 
 switch(argv) {
     case 'file':
-        productsDao = new DaoFile('./src/daos/dao-filesystem/products.json');
-        cartsDao = new DaoFile('./src/daos/dao-filesystem/carts.json');
+        productsDao = new DaoFile('./src/persistence/daos/dao-filesystem/products.json');
+        cartsDao = new DaoFile('./src/persistence/daos/dao-filesystem/carts.json');
         logger.info(argv);
         break;
     case 'mongo':
