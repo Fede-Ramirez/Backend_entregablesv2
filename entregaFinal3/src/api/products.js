@@ -4,10 +4,11 @@ const find = async(id) => {
     if (id) {
         const product = await ProductModel.findById(id);
         return product;
-    };
-
-    const product = await ProductModel.find();
-    return product;
+    } else {
+        throw new Error(`No se encontró el id ${id}`);
+    }
+    //const product = await ProductModel.find();
+    //return product;
 };
 
 const findByCategory = async(categoryId) => {
