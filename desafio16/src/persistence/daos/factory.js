@@ -22,7 +22,7 @@ switch(argv) {
         productsDao = new DaoMongoDB('products', productsSchema);
         cartsDao = new DaoMongoDB('carts', cartsSchema);
         logger.info(argv);
-        axiosUtilities();
+        //axiosUtilities();
         break;
     default:
         productsDao = new DaoMemory();

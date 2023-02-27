@@ -6,7 +6,7 @@ const logger = require('../services/log4jsConfig');
 
 
 //Sugerencia: para ver mejor la funcionalidad de los métodos recomiendo comentar todas salvo la funcionalidad que se desea probar
-logger.info('Ejecutando tests con axios');
+//logger.info('Ejecutando tests con axios');
 
 const axiosUtilities = async() => {
     //logger.info('se ejecuta axios-get');
