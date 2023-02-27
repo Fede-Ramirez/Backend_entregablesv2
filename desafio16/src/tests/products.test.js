@@ -7,7 +7,7 @@ let ProductsModel = mongoose.model('products', ProductsSchema);
 
 describe('Tests server products', () => {
     beforeEach(async() => {
-        jest.setTimeout(90000);
+        //jest.setTimeout(90000);
         await mongoose.connection.collections['products'].drop();
     });
 
