@@ -5,6 +5,7 @@ const productsSchema = require("./dao-mongodb/schemas/productsSchema");
 const cartsSchema = require("./dao-mongodb/schemas/cartsSchema");
 const { initMongoDB } = require("./dao-mongodb/mongodb");
 const logger = require('../../services/log4jsConfig');
+const { axiosUtilities } = require('../../http-client/axiosTests');
 
 let productsDao;
 let cartsDao;
@@ -21,6 +22,7 @@ switch(argv) {
         productsDao = new DaoMongoDB('products', productsSchema);
         cartsDao = new DaoMongoDB('carts', cartsSchema);
         logger.info(argv);
+        axiosUtilities();
         break;
     default:
         productsDao = new DaoMemory();
@@ -36,6 +38,13 @@ async function getAllProducts() {
     return await productsDao.getAll();
 };
 
+async function updateProduct(id, name, price, stock, codebar) {
+    return await productsDao.update(id, name, price, stock, codebar);
+};
+
+async function deleteProduct(id) {
+    return await dao.delete(id);
+};
 
 async function saveCarts(obj) {
     return await cartsDao.save(obj);
@@ -56,6 +65,8 @@ function getCartsDao() {
 module.exports = {
     saveProducts,
     getAllProducts,
+    updateProduct,
+    deleteProduct,
     saveCarts,
     getAllCarts,
     getProductsDao,

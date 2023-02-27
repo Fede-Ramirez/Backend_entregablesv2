@@ -12,7 +12,19 @@ async function getAllProductsService() {
     return products;
 };
 
+async function updateProductService(id, name, price, stock, codebar) {
+    const productUpdated = await productsRepository.updateProduct(id, name, price, stock, codebar);
+    return productUpdated;
+};
+
+async function deleteProductService(id) {
+    const productDeleted = await productsRepository.deleteProduct(id);
+    return productDeleted;
+};
+
 module.exports = {
     saveProductsService,
-    getAllProductsService
+    getAllProductsService,
+    updateProductService,
+    deleteProductService
 };

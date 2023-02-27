@@ -37,6 +37,31 @@ class DaoMongoDB {
             logger.error(error);
         }
     }
+
+    async update(id, name, price, stock, codebar) {
+        try {
+            let product = await this.collection.findOne({ id: id });
+
+            const docUpdated = await this.collection.findByIdAndUpdate(
+                product._id,
+                { name, price, stock, codebar },
+                { new: true }
+            );
+            return docUpdated;
+        } catch (error) {
+            logger.error(error.message);
+        }
+    }
+
+    async delete(id) {
+        try {
+            const doc = await this.collection.findOne({ id: id });
+            await this.collection.findByIdAndDelete(doc._id);
+            return doc;
+        } catch (error) {
+            logger.error(error.message);
+        }
+    }
 }
 
 module.exports = { 
