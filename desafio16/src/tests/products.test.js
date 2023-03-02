@@ -2,13 +2,31 @@ const mongoose = require('mongoose');
 const ProductsSchema = require('../persistence/daos/dao-mongodb/schemas/productsSchema');
 const app = require('../services/server');
 const request = require('supertest');
+const config = require('../config/config');
 
 let ProductsModel = mongoose.model('products', ProductsSchema);
 
 describe('Tests server products', () => {
-    beforeEach(async() => {
+    /*beforeEach(async() => {
         //jest.setTimeout(90000);
         await mongoose.connection.collections['products'].drop();
+    });*/
+
+    beforeEach(async () => {
+
+        await mongoose.connect("mongodb://localhost:27017/desafio16");//localhost:27017/desafio15%22);%60%60%60)
+        //await mongoose.connect(config.MONGO_ATLAS_URL);
+
+        await mongoose.connection.db.dropCollection("products");
+    
+    });
+    
+    afterAll(async () => {
+    
+    // Desconectamos de la base de datos de prueba y detenemos el servidor_
+    
+        await mongoose.disconnect();
+    
     });
 
     it('post product', async ()=>{
@@ -21,7 +39,7 @@ describe('Tests server products', () => {
         };
 
         const response = await request(app)
-            .post('/products/new-products')
+            .post('/api/products/new-products')
             .send(product);
 
         expect(response.statusCode).toBe(200);
@@ -42,7 +60,7 @@ describe('Tests server products', () => {
 
         await ProductsModel.create(product);
         const response = await request(app)
-            .get('/products/available-products');
+            .get('/api/products/available-products');
 
         expect(response.statusCode).toBe(200);
         expect(response.body).toHaveLength(1);
@@ -53,10 +71,10 @@ describe('Tests server products', () => {
 
     it('update product', async()=>{
         const product = {
-            id: 'id test',
+            id: 6,
             name: 'name test',
-            price: 'price test',
-            stock: 'stock test',
+            price: 60,
+            stock: 16,
             codebar: 'codebar test'
         };
 
@@ -64,12 +82,12 @@ describe('Tests server products', () => {
 
         const productUpdated = {
             name: 'name test updated',
-            price: 'price test updated',
-            stock: 'stock test updated',
+            price: 70,
+            stock: 13,
             codebar: 'codebar test updated'
         };
 
-        const response = await request(app).put('/products/5').send(productUpdated);
+        const response = await request(app).put('/api/products/5').send(productUpdated);
 
         expect(response.statusCode).toBe(200);
         expect(response.body.modifiedCount).toBe(1);
@@ -78,14 +96,14 @@ describe('Tests server products', () => {
     it('delete product', async()=>{
         const product = {
             id: 5,
-            name: 'name test to be deleted',
-            price: 'price test to be deleted',
-            stock: 'stock test to be deleted',
-            codebar: 'codebar test to be deleted'
+            name: 'cornalitos',
+            price: 3000,
+            stock: 40,
+            codebar: 'mcoiesnf3un49'
         };
 
         const responseCreate = await ProductsModel.create(product);
-        const response = await request(app).delete('/products/5');
+        const response = await request(app).delete('/api/products/5');
 
         expect(response.statusCode).toBe(200);
         expect(response.body.deletedCount).toBe(1);
