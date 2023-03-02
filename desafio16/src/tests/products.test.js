@@ -12,27 +12,27 @@ describe('Tests server products', () => {
         await mongoose.connection.collections['products'].drop();
     });*/
 
-    beforeEach(async () => {
+    /*beforeEach(async () => {
 
         await mongoose.connect("mongodb://localhost:27017/desafio16");//localhost:27017/desafio15%22);%60%60%60)
         //await mongoose.connect(config.MONGO_ATLAS_URL);
 
         await mongoose.connection.db.dropCollection("products");
     
-    });
+    });*/
     
-    afterAll(async () => {
+    /*afterAll(async () => {
     
     // Desconectamos de la base de datos de prueba y detenemos el servidor_
     
         await mongoose.disconnect();
     
-    });
+    });*/
 
     it('post product', async ()=>{
         const product = {
             id: 5,
-            name: 'cornalitos',
+            name: 'cornalitos frescos',
             price: 3000,
             stock: 40,
             codebar: 'mcoiesnf3un49'
@@ -58,7 +58,7 @@ describe('Tests server products', () => {
             codebar: 'mcoiesnf3un49'
         };
 
-        await ProductsModel.create(product);
+        //await ProductsModel.create(product);
         const response = await request(app)
             .get('/api/products/available-products');
 
@@ -78,7 +78,7 @@ describe('Tests server products', () => {
             codebar: 'codebar test'
         };
 
-        const responseProduct = await ProductsModel.create(product);
+        //const responseProduct = await ProductsModel.create(product);
 
         const productUpdated = {
             name: 'name test updated',
@@ -102,7 +102,7 @@ describe('Tests server products', () => {
             codebar: 'mcoiesnf3un49'
         };
 
-        const responseCreate = await ProductsModel.create(product);
+        //const responseCreate = await ProductsModel.create(product);
         const response = await request(app).delete('/api/products/5');
 
         expect(response.statusCode).toBe(200);
