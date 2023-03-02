@@ -43,7 +43,7 @@ async function updateProduct(id, name, price, stock, codebar) {
 };
 
 async function deleteProduct(id) {
-    return await dao.delete(id);
+    return await productsDao.delete(id);
 };
 
 async function saveCarts(obj) {

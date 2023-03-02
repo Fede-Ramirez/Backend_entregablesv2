@@ -10,18 +10,18 @@ describe('Tests server products', () => {
     /*beforeEach(async() => {
         //jest.setTimeout(90000);
         await mongoose.connection.collections['products'].drop();
-    });*/
+    });
 
-    /*beforeEach(async () => {
+    beforeEach(async () => {
 
         await mongoose.connect("mongodb://localhost:27017/desafio16");//localhost:27017/desafio15%22);%60%60%60)
         //await mongoose.connect(config.MONGO_ATLAS_URL);
 
         await mongoose.connection.db.dropCollection("products");
     
-    });*/
+    });
     
-    /*afterAll(async () => {
+    afterAll(async () => {
     
     // Desconectamos de la base de datos de prueba y detenemos el servidor_
     
@@ -71,7 +71,7 @@ describe('Tests server products', () => {
 
     it('update product', async()=>{
         const product = {
-            id: 6,
+            id: 5,
             name: 'name test',
             price: 60,
             stock: 16,
