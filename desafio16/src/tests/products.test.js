@@ -81,13 +81,16 @@ describe('Tests server products', () => {
         //const responseProduct = await ProductsModel.create(product);
 
         const productUpdated = {
+            id: 5,
             name: 'name test updated',
             price: 70,
             stock: 13,
             codebar: 'codebar test updated'
         };
 
-        const response = await request(app).put('/api/products/5').send(productUpdated);
+        const response = await request(app)
+        .put('/api/products/5')
+        .send(productUpdated);
 
         expect(response.statusCode).toBe(200);
         expect(response.body.modifiedCount).toBe(1);
