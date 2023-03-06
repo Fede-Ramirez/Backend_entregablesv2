@@ -86,7 +86,7 @@ Deberás realzar una operación POST, en la que agregarás productos al carrito.
 
 ### CARRITOS: localhost:3000/api/cart/remove
 
-Aquí podrás realizar una solicitud DELETE. Deberás pasar el id del producto que deseas eliminar del carrito (si pasas el id de un producto que no está en el carrito recibirás un error) y la cantidad a eliminar. Por ende, deberás completar los siguientes campos "productId" y "amount". La cantidad es opcional, si no queres podes evitarla, pero al no poner una cantidad y solamente el id eliminarás todos los items que tengas de ese producto por lo tanto tener cuidado.
+Aquí podrás realizar una solicitud POST. Deberás pasar el id del producto que deseas eliminar del carrito (si pasas el id de un producto que no está en el carrito recibirás un error) y la cantidad a eliminar. Por ende, deberás completar los siguientes campos "productId" y "amount". La cantidad es opcional, si no queres podes evitarla, pero al no poner una cantidad y solamente el id eliminarás todos los items que tengas de ese producto por lo tanto tener cuidado.
 
 ### CARRITOS: localhost:3000/api/cart/order
 
