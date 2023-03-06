@@ -42,7 +42,7 @@ Es una solicitud GET que te traerá todas las categorías de productos disponibl
 
 ### CATEGORÍAS: localhost:3000/api/categories/:id
 
-Solicitud GET que te trae una categoría en particular brindando como parámetro el id de la categoría.
+Solicitud GET que te trae una categoría en particular brindando como parámetro el id de la categoría. Si brindas un id inválido, se te informará mediante un error.
 
 ### CATEGORÍAS: localhost:3000/api/categories
 
@@ -55,6 +55,48 @@ Es una solitud PUT que te permitirá modificar una categoría ya existente. Debe
 ### CATEGORÍAS: localhost:3000/api/categories/:id
 
 Es una solicitud DELETE que te permitirá eliminar una categoría SIEMPRE Y CUANDO no tenga productos asociados a la misma. Si hay productos que pertenecen a la categoría, no podrás eliminarla. Para probarla, deberás pasar el id de la categoría por parámetro.
+
+### PRODUCTOS: localhost:3000/api/products
+
+Es una solicitud GET que te permitirá traer todos los productos presentes en la base de datos. Si no tienes productos en la base, deberás crearlos mediante una solicitud POST, en el endpoint que explicaré en breve.
+
+### PRODUCTOS: localhost:3000/api/products/:id
+
+Es una solicitud GET que te permitirá traer un solo producto al pasar su id como parámetro en el endpoint. Si pasas un id inválido, obtendrás un error. 
+
+### PRODUCTOS: localhost:3000/api/products
+
+Es una solicitud POST que te permitirá crear un producto respetando el modelo de mongoose correspondiente. Si no lo respetas, no podrás crearlo. Deberás pasarle incluso un ID correspondiente a una categoría en particular de las que tengas creadas en la base de datos. De esa manera, el producto quedará asociado a esa categoría.
+
+### PRODUCTOS: localhost:3000/api/products/:id
+
+Es una solicitud PUT que te permitirá modificar un producto creado en tu base de datos. Respetando los campos correspondientes y pasando el id de un producto existente podrás modificarlo sin inconvenientes.
+
+### PRODUCTOS: localhost:3000/api/products/:id
+
+Es una solicitud DELETE que te permitirá eliminar un producto de tu base de datos. Deberás pasar un id válido puesto que si no recibirás un error. 
+
+### CARRITOS: localhost:3000/api/cart
+
+Es una solicitud GET que te permitirá visualizar el carrito del usuario con el que te has logueado. Si no realizas el login previo no estarás autorizado a visualizar el carrito, puesto que cada usuario tiene su propio carrito.
+
+### CARRITOS: localhost:3000/api/cart/add
+
+Deberás realzar una operación POST, en la que agregarás productos al carrito. Deberás completar dos campos: "productId" y "amount". En productId deberás pasar el id de algún producto presente en la base de datos (si le pasas uno inválido obtendrás un error). Y en amount deberás pasar el número de items que llevarás de ese producto (ATENCIÓN: cada producto cuenta con su stock propio, por lo tanto si agotas stock no podrás seguir insertando ese producto en el carrito). Si deseas agregar otro producto solamente cambia el id y listo!
+
+### CARRITOS: localhost:3000/api/cart/remove
+
+Aquí podrás realizar una solicitud DELETE. Deberás pasar el id del producto que deseas eliminar del carrito (si pasas el id de un producto que no está en el carrito recibirás un error) y la cantidad a eliminar. Por ende, deberás completar los siguientes campos "productId" y "amount". La cantidad es opcional, si no queres podes evitarla, pero al no poner una cantidad y solamente el id eliminarás todos los items que tengas de ese producto por lo tanto tener cuidado.
+
+### CARRITOS: localhost:3000/api/cart/order
+
+Por último, tenemos esta solicitud POST para crear la orden de tu carrito. No podrás crear la orden con el carrito vacío, por lo tanto deberás agregar al menos un producto o recibirás un aviso de alerta. Una vez que tengas productos en el carrito, podrás crear tu orden. Recibirás un aviso por whatsapp acerca de tu compra.
+
+En el archivo .env.example encontrarás todas las credenciales que vas a necesitar para probar el proyecto. Gracias por leer!
+
+
+
+
 
 
 

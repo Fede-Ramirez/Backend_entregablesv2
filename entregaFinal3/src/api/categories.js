@@ -1,7 +1,6 @@
 const { CategoryModel } = require('../models');
 const ProductsAPI = require('./products');
 const { ApiError, ErrorStatus } = require('./errors');
-const logger = require('../services/log4jsConfig');
 
 const find = async (id) => {
     if (id) {

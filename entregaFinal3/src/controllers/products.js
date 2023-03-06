@@ -1,7 +1,7 @@
-const { ProductsAPI } = require('../api');
+const { ProductAPI } = require('../api');
 
 const getAllProducts = async (req, res) => {
-    const products = await ProductsAPI.find();
+    const products = await ProductAPI.find();
     res.json({
         data: products,
     });
@@ -9,7 +9,7 @@ const getAllProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
     const { id } = req.params;
-    const product = await ProductsAPI.find(id);
+    const product = await ProductAPI.find(id);
 
     if (!product) {
         return res.status(404).json({ msg: 'El producto solicitado no existe' });
@@ -37,7 +37,7 @@ const createProduct = async (req, res) => {
         categoryId,
     };
 
-    const product = await ProductsAPI.create(newProduct);
+    const product = await ProductAPI.create(newProduct);
 
     res.json({
         msg: 'Producto creado con éxito',
@@ -63,7 +63,7 @@ const updateProduct = async (req, res) => {
         categoryId,
     };
 
-    const productUpdated = await ProductsAPI.update(id, newData);
+    const productUpdated = await ProductAPI.update(id, newData);
 
     res.json({
         msg: 'Producto actualizado con éxito',
@@ -73,7 +73,7 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
     const { id } = req.params;
-    const product = await ProductsAPI.find(id);
+    const product = await ProductAPI.find(id);
 
     if (!product) {
         return res.status(404).json({ 
@@ -81,7 +81,7 @@ const deleteProduct = async (req, res) => {
         });
     };
 
-    await ProductsAPI.remove(id);
+    await ProductAPI.remove(id);
 
     res.json({
         msg: 'Producto eliminado con éxito',
