@@ -11,15 +11,12 @@ const getAllProductsController = async () => {
     return products;
 };
 
-const updateProductController = async (id, name, price, stock, codebar) => {
-    const data = {
-        name,
-        price,
-        stock,
-        codebar
-    }
+const updateProductController = async (updateData) => {
+    const { data, id } = updateData; 
+    const { name, price, stock,codebar } = data;
+    console.log('la data es',data);
+    const productUpdated = await updateProductService(id, name, price, stock, codebar);
 
-    const productUpdated = await updateProductService(id, data);
     return productUpdated;
 };
 
