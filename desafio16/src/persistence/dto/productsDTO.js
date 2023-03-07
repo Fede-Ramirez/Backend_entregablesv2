@@ -1,8 +1,11 @@
 class ProductsDTO {
-    constructor({ name, price, stock }) {
+    constructor({ _id, id, name, price, stock, codebar }) {
+        this._id = _id
+        this.id = id
         this.name = name
         this.price = price
         this.stock = stock
+        this.codebar = codebar
     }
     
 }
