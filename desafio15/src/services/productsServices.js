@@ -1,4 +1,4 @@
-const { saveProducts, getAllProducts } = require("../persistence/persistence.js");
+const { saveProducts, getAllProducts, updateProduct, deleteProduct } = require("../persistence/persistence.js");
 
 async function saveProductsService(items){
     const products = await saveProducts(items)
@@ -10,7 +10,19 @@ async function getAllProductsService() {
     return products;
 };
 
+async function updateProductService(id, title, price, stock) {
+    const productUpdated = await updateProduct(id, title, price, stock);
+    return productUpdated;
+};
+
+async function deleteProductService(id) {
+    const productDeleted = await deleteProduct(id);
+    return productDeleted;
+}
+
 module.exports = {
     saveProductsService,
-    getAllProductsService
+    getAllProductsService,
+    updateProductService,
+    deleteProductService
 };

@@ -1,4 +1,4 @@
-const { saveCarts, getAllCarts } = require("../persistence/persistence.js");
+const { saveCarts, getAllCarts, deleteCart } = require("../persistence/persistence.js");
 
 async function saveCartsService(items){
     const carts = await saveCarts(items)
@@ -10,7 +10,13 @@ async function getAllCartsService() {
     return carts;
 };
 
+async function deleteCartService(id) {
+    const cartDeleted = await deleteCart(id);
+    return cartDeleted;
+};
+
 module.exports = {
     saveCartsService,
-    getAllCartsService
+    getAllCartsService,
+    deleteCartService
 };

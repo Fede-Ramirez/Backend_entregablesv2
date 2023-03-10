@@ -1,9 +1,16 @@
-const { Router } = require('express');
+const Router = require('koa-router');
 const productsRouter = require('./products.js');
 const cartRouter = require('./cart.js');
-const router = Router();
 
-router.use('/products', productsRouter);
-router.use('/cart', cartRouter);
+const router = new Router({
+    prefix: '/api'
+});
 
-module.exports = router;
+router.use(productsRouter);
+router.use(cartRouter);
+
+router.get("/", (ctx) => {
+    console.log(ctx);
+});
+
+module.exports = router.routes();

@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const config = require('../../config/config');
 const logger = require('../../services/log4jsConfig');
 
+mongoose.set('strictQuery', true);
+
 const initMongoDB = async () => {
     try {
         logger.info('Conectando a la db');
@@ -16,7 +18,7 @@ const initMongoDB = async () => {
 class MongoDB {
     constructor(collection, schema){
         this.collection = mongoose.model(collection, schema);
-    }
+    };
 
     async save(doc) {
         try {
@@ -24,7 +26,7 @@ class MongoDB {
             return document;
         } catch (error) {
             logger.error(error);
-        }
+        };
     }
 
     async getAll() {
@@ -33,7 +35,32 @@ class MongoDB {
             return docs;
         } catch (error) {
             logger.error(error);
-        }
+        };
+    }
+
+    async update(id, title, price, stock) {
+        try {
+            let product = await this.collection.findOne({ id: id });
+
+            const docUpdated = await this.collection.findByIdAndUpdate(
+                product._id,
+                { title, price, stock },
+                { new: true }
+            );
+            return docUpdated;
+        } catch (error) {
+            logger.error(error.message);
+        };
+    }
+
+    async delete(id) {
+        try {
+            const doc = await this.collection.findOne({ id: id });
+            await this.collection.findByIdAndDelete(doc._id);
+            return doc;
+        } catch (error) {
+            logger.error(error.message);
+        };
     }
 }
 

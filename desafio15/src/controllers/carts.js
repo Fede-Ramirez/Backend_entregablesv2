@@ -1,26 +1,51 @@
-const { saveCartsService, getAllCartsService } = require("../services/cartsServices");
+const { saveCartsService, getAllCartsService, deleteCartService } = require("../services/cartsServices");
 const logger = require('../services/log4jsConfig');
 
-const saveCartsController = async (req, res) => {
-    const { body } = req;
+const saveCartsController = async (ctx, next) => {
+    const data = ctx.request.body;
     try {
-        const carts = await saveCartsService(body);
-        res.json(carts);
+        const carts = await saveCartsService(data);
+        ctx.body = {
+            status: 'success',
+            data: carts
+        };
+        ctx.status = 201;
     } catch (error) {
-        logger.error(error);
+        next(error);
     }
-}
+};
 
-const getAllCartsController = async (req, res) => {
+const getAllCartsController = async (ctx, next) => {
     try {
         const carts = await getAllCartsService();
-        res.json(carts);
+        ctx.body = {
+            status: 'success',
+            data: carts
+        };
+        ctx.status = 200;
     } catch (error) {
         logger.error(error);
     }
-}
+};
+
+const deleteCartController = async (ctx, next) => {
+    try {
+        const { id } = ctx.params;
+        const cartDeleted = await deleteCartService(id);
+
+        ctx.body = {
+            status: 'success',
+            message: `Cart with id ${id} deleted successfully`,
+            data: cartDeleted
+        };
+        ctx.status = 200;
+    } catch (error) {
+        next(error);
+    }
+};
 
 module.exports = {
     saveCartsController,
-    getAllCartsController
+    getAllCartsController,
+    deleteCartController
 }

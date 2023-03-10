@@ -36,6 +36,14 @@ async function getAllProducts() {
     return await productsPersistence.getAll();
 };
 
+async function updateProduct(id, title, price, stock) {
+    return await productsPersistence.update(id, title, price, stock);
+};
+
+async function deleteProduct(id) {
+    return await productsPersistence.delete(id);
+};
+
 async function saveCarts(obj) {
     return await cartsPersistence.save(obj);
 };
@@ -44,9 +52,16 @@ async function getAllCarts() {
     return await cartsPersistence.getAll();
 };
 
+async function deleteCart(id) {
+    return await cartsPersistence.delete(id);
+};
+
 module.exports = {
     saveProducts,
     getAllProducts,
+    updateProduct,
+    deleteProduct,
     saveCarts,
     getAllCarts,
+    deleteCart
 }
